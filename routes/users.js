@@ -22,7 +22,7 @@ router.get('/:id', (req, res, next) => {
     }
 });
 
-// GET all the post per user ID 
+// GET all the post per user ID param
 router.get('/:id/post',(req,res)=> {
     const userId = req.params.id
     const userPosts = posts.filter(post => post.userId == userId)

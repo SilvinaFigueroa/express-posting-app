@@ -5,6 +5,13 @@ const posts = require('../data/posts.js');
 
 
 
+// GET all the post per user ID query 
+router.get('/',(req,res)=> {
+    var userId = req.query["userId"];
+    const userPosts = posts.filter(post => post.userId == userId)
+    res.json(userPosts)
+})
+
 //GET route to get all post data
 router.get('/api/posts', (req, res) => {
     res.json(posts);
@@ -21,6 +28,7 @@ router.get('/:id', (req, res, next) => {
         next();
     }
 });
+
 
 // POST Create a Post
 router.post('/', (req, res) => {
