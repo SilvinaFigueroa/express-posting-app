@@ -21,7 +21,7 @@ app.use((req, res, next) => {
         `-----
 ${time.toLocaleTimeString()}: Received a ${req.method} request to ${req.url}.`
     );
-    if (Object.keys(req.body).length > 0) {
+    if (req.body && Object.keys(req.body.length > 0)) {
         console.log('Containing the data:');
         console.log(`${JSON.stringify(req.body)}`);
     }
@@ -84,8 +84,8 @@ app.use((req, res) => {
 app.use((err, req, res, next) => {
     res.status(err.status || 500);
     res.json({ error: err.message });
-  });
-  
+});
+
 
 app.listen(PORT, () => {
     console.log('Server running on port: ' + PORT);

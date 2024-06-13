@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const users = require('../data/users.js');
+const posts = require('../data/posts.js');
 
 
 
@@ -20,6 +21,13 @@ router.get('/:id', (req, res, next) => {
         next();
     }
 });
+
+// GET all the post per user ID 
+router.get('/:id/post',(req,res)=> {
+    const userId = req.params.id
+    const userPosts = posts.filter(post => post.userId == userId)
+    res.json(userPosts)
+})
 
 // POST Create a User
 router.post('/', (req, res) => {
