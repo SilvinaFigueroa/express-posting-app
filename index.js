@@ -3,7 +3,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const userRouter = require('./routes/users.js')
 const postRouter = require('./routes/posts.js')
-
+const commentRouter = require('./routes/comments.js')
 
 
 // Body parser middlware
@@ -60,6 +60,7 @@ app.use("/api", function (req, res, next) {
 //API routes
 app.use('/api/users', userRouter)
 app.use('/api/posts', postRouter)
+app.use('/api/comments',commentRouter)
 
 
 app.get('/', (req, res) => {
